@@ -767,14 +767,14 @@ It is intended for VCL applications running on Windows.
 ┌─────────────┬─────────────┬──────────────────────────────────────────────────────────────┐
 │ Date        │ UNIT Name   │ Changes                                                      │
 ├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
-│3 Sep 2026   │Countdown    │Initial release.                                              │
+│23 Sep 2026  │ Countdown   │ Initial release.                                             │
 ├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
-│29 Sep 2026  │Countdown    │Added long-caption support. Caption text now word-wraps within│
+│29 Sep 2026  │ Countdown   │Added long-caption support. Caption text now word-wraps within│
 │             │             │a maximum width of 66% of the intended parent form or monitor │
-│             │             │work area. The completed dialog is limited to 80% of the     │
+│             │             │work area. The completed dialog is limited to 80% of the      │
 │             │             │corresponding height, with space reserved for the title bar,  │
 │             │             │countdown, buttons, optional checkbox, gaps, and margins. If  │
-│             │             │the full caption cannot fit, it is truncated and terminated  │
+│             │             │the full caption cannot fit, it is truncated and terminated   │
 │             │             │with "...". Explicit CR, LF, CR/LF, and LF/CR line breaks are │
 │             │             │preserved as hard line breaks.                                │
 └─────────────┴─────────────┴──────────────────────────────────────────────────────────────┘
