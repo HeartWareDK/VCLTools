@@ -1,4 +1,4 @@
-Copyright © 2026 HeartWare. All rights reserved.
+﻿Copyright © 2026 HeartWare. All rights reserved.
 
 This UNIT is released under the **HeartWare FreeWare License**.
 
@@ -46,6 +46,8 @@ The dialog is created completely at runtime and displays:
 - and, when enabled, the normal window close action.
 
 The dialog automatically sizes itself to its contents, uses the monitor DPI of the current form, and centers itself on the current modal form when one exists. If there is no current modal form, it falls back to the active VCL form or the primary monitor.
+
+Long captions are automatically word-wrapped. The caption text area is limited to 66% of the width of the intended parent form (or monitor work area) and the completed dialog is limited to 80% of the corresponding height. If the full caption still cannot fit within that space, it is truncated and terminated with `...`. Explicit CR, LF, CR/LF, and LF/CR line breaks in the supplied caption are preserved as hard line breaks.
 
 When the requested countdown expires normally, `Countdown` returns `mrOK`.
 
@@ -126,7 +128,13 @@ Example:
 'Please wait before performing this operation again.'
 ```
 
-The dialog widens automatically when necessary to accommodate this text.
+The dialog widens and grows vertically as necessary to accommodate this text, within the available size limits.
+
+Long captions are word-wrapped automatically. The maximum caption width is 66% of the width of the intended parent form, or 66% of the monitor work area when no parent form is available. The overall dialog height is limited to 80% of the corresponding parent-form or monitor height; space required by the countdown, checkbox, buttons, margins, and the window's non-client area is reserved before determining how much height remains for the caption.
+
+If the complete wrapped caption cannot fit within the available caption area, the text is truncated and `...` is appended.
+
+Line breaks supplied by the caller are respected. CR, LF, CR/LF, and LF/CR input is normalized internally and treated as explicit hard line breaks rather than as ordinary word-wrapping opportunities.
 
 ## `CheckBoxText`
 
@@ -659,6 +667,12 @@ The dialog width is automatically expanded as necessary for:
 - the minimum button-area width;
 - and, when present, the checkbox plus the right-aligned button group.
 
+The main caption is measured as a wrapped rectangular text area rather than as a single line. Its maximum width is 66% of the intended parent form or monitor work-area width. The completed dialog is constrained to 80% of the corresponding parent-form or monitor height.
+
+The layout calculation reserves the space needed for the window's non-client area, margins, countdown row, and button/checkbox row before determining the maximum usable caption height. If the wrapped caption exceeds that remaining space, the longest fitting portion is displayed and terminated with `...`.
+
+Explicit line breaks in the caption are preserved. CR, LF, CR/LF, and LF/CR input are normalized internally to a single hard-break representation before measurement and display.
+
 Without a checkbox, the buttons are centered.
 
 With a checkbox, the checkbox is left-aligned and the buttons are right-aligned on the same row.
@@ -745,3 +759,22 @@ VCL.ExtCtrls
 ```
 
 It is intended for VCL applications running on Windows.
+
+# Version History
+
+```text
+┌─────────────┬─────────────┬──────────────────────────────────────────────────────────────┐
+│ Date        │ UNIT Name   │ Changes                                                      │
+├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
+│3 Sep 2026   │Countdown    │Initial release.                                              │
+├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
+│29 Sep 2026  │Countdown    │Added long-caption support. Caption text now word-wraps within│
+│             │             │a maximum width of 66% of the intended parent form or monitor │
+│             │             │work area. The completed dialog is limited to 80% of the     │
+│             │             │corresponding height, with space reserved for the title bar,  │
+│             │             │countdown, buttons, optional checkbox, gaps, and margins. If  │
+│             │             │the full caption cannot fit, it is truncated and terminated  │
+│             │             │with "...". Explicit CR, LF, CR/LF, and LF/CR line breaks are │
+│             │             │preserved as hard line breaks.                                │
+└─────────────┴─────────────┴──────────────────────────────────────────────────────────────┘
+```
