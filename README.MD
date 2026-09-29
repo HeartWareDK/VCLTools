@@ -633,7 +633,7 @@ Any `TModalResults` members other than `mrIgnore`, `mrClose`, and `mrAbort` are 
 # Return values
 
 The important return values are:
-
+```text
 ┌──────────┬───────────────────────────────────────────────────┐
 │ Result   │ Meaning                                           │
 ├──────────┼───────────────────────────────────────────────────┤
@@ -644,6 +644,7 @@ The important return values are:
 │ mrClose  │ The user closed the form through the normal       │
 │          │ window close mechanism when closing was enabled.  │
 └──────────┴───────────────────────────────────────────────────┘
+```
 The most common pattern is therefore:
 
 ```delphi
