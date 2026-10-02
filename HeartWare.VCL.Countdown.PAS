@@ -10,7 +10,9 @@ USES
 TYPE TModalResults = SET OF BYTE;
 
 CONST MilliSecsPerSecond = 1000;
-CONST INFINITE_TIMEOUT = MAXINT;
+CONST MilliSecsPerMinute = SecsPerMin*MilliSecsPerSecond;
+CONST MilliSecsPerHour   = MinsPerHour*MilliSecsPerMinute;
+CONST INFINITE_TIMEOUT   = MAXINT;
 
 FUNCTION CurrentModalForm : TCustomForm;
 

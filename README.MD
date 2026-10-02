@@ -237,7 +237,7 @@ FALSE
 
 When disabled, the system-menu close action is removed and the dialog prevents an unintended close result.
 
-When enabled, normal modal-form closing is allowed. In normal VCL modal-form behaviour, closing the window through the system close action results in an `mrClose` return value, rather than `mrOK`.
+When enabled, normal modal-form closing is allowed using Alt+F4, the System Menu, or the "X" in top right corner. Contrary to normal VCL modal-form behaviour, closing the window in any of these manners causes an `mrClose` return value instead of `mrCancel`.
 
 ## `AllowAbort`
 
@@ -767,8 +767,6 @@ It is intended for VCL applications running on Windows.
 ┌─────────────┬─────────────┬──────────────────────────────────────────────────────────────┐
 │ Date        │ UNIT Name   │ Changes                                                      │
 ├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
-│ 23 Sep 2026 │ Countdown   │ Initial release.                                             │
-├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
 │ 29 Sep 2026 │ Countdown   │Added long-caption support. Caption text now word-wraps within│
 │             │             │a maximum width of 66% of the intended parent form or monitor │
 │             │             │work area. The completed dialog is limited to 80% of the      │
@@ -777,5 +775,7 @@ It is intended for VCL applications running on Windows.
 │             │             │the full caption cannot fit, it is truncated and terminated   │
 │             │             │with "...". Explicit CR, LF, CR/LF, and LF/CR line breaks are │
 │             │             │preserved as hard line breaks.                                │
+├─────────────┼─────────────┼──────────────────────────────────────────────────────────────┤
+│ 23 Sep 2026 │ Countdown   │ Initial release.                                             │
 └─────────────┴─────────────┴──────────────────────────────────────────────────────────────┘
 ```
